@@ -28,6 +28,12 @@ public class TestDriveExportedValidationDetection {
 		assertEquals(1, sheet.getDataValidations().size());
 	}
 	
+	@Test
+	public void testManuallyRepaired() throws Exception {
+		XSSFSheet sheet = getSheet("exported-manually-repaired.xlsx");
+		assertEquals(1, sheet.getDataValidations().size());
+	}
+	
 	private XSSFSheet getSheet(String filename) throws Exception {
 		URI uri = TestDriveExportedValidationDetection.class.getResource("/" + filename).toURI();
 		Workbook wb = org.apache.poi.ss.usermodel.WorkbookFactory.create(uri.toURL().openStream());
